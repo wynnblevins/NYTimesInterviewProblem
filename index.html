@@ -43,9 +43,9 @@
       <tr ng-repeat="article in displayedArticles">
         <td>{{article.title}}</td>
         <td>{{article.abstract}}</td>
-        <td>{{article.url}}</td>
-        <td>{{article.published_date | amDateFormat:'MM.DD.YYYY HH:mm:ss' }}</td>
-        <td>{{article.published_date | amTimezone:'Pacific/Fiji' | amDateFormat:'MM.DD.YYYY HH:mm:ss' }}</td>
+        <td><a href="{{article.url}}">View Full Story</a></td>
+        <td>{{article.published_date | amDateFormat:'MM/DD/YYYY hh:mm:ss A' }}</td>
+        <td>{{article.published_date | amTimezone:'Pacific/Fiji' | amDateFormat:'MM/DD/YYYY hh:mm:ss A' }}</td>
       </tr>
       </tbody>
     </table>
