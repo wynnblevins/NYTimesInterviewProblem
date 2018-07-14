@@ -1,7 +1,10 @@
 angular.module('app')
   .controller('TopStoriesController', ['$scope', 'ArticlesFactory', 
     function ($scope, ArticlesFactory) {
+  const itemsPerPage = 10;
   $scope.articles = [];
+  $scope.predicates = ['title', 'abstract', 'url'];
+  $scope.itemsPerPage = itemsPerPage;
   
   retrieveData = () => {
     ArticlesFactory.getAllArticles().then((response) => {
@@ -16,8 +19,8 @@ angular.module('app')
 
   let init = () => {
     retrieveData();
-    $scope.predicates = ['title', 'abstract', 'url'];
     
+
   };
 
   init();
