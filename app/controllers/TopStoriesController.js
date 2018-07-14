@@ -12,15 +12,8 @@ angular.module('app')
     });
   };
 
-  $scope.refreshClick = () => {
-    $scope.articles = [];
-    retrieveData();
-  };
-
   let init = () => {
     retrieveData();
-    
-
   };
 
   init();
