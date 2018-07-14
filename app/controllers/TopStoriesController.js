@@ -16,6 +16,8 @@ angular.module('app')
 
   let init = () => {
     retrieveData();
+    $scope.predicates = ['title', 'abstract', 'url'];
+    
   };
 
   init();
