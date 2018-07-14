@@ -1,11 +1,11 @@
 angular.module('app')
   .factory('ArticlesFactory', 
-    ['$http', '$q', function ($http, $q) {
+    ['$http', 'APIKeyService', function ($http, apiKeyService) {
   let articlesFactory = {};
 
-  articlesFactory.getAllArticles = () => {
-    const API_KEY = 'e8d7b2a2149143378f5d20b5f78bf0ee';
-    let url = "https://api.nytimes.com/svc/topstories/v2/home.json";
+  articlesFactory.requestArticles = (section) => {
+    const API_KEY = apiKeyService.getAPIKey();
+    let url = `https://api.nytimes.com/svc/topstories/v2/${section}.json`;
     url += `?api-key=${API_KEY}`;
     
     return $http({
