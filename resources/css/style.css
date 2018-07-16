@@ -2,3 +2,7 @@
   color: #333333;
   font-family: 'Times New Roman', Times, serif;
 }
+
+.centered-horizontal {
+  margin: 0 auto;
+}

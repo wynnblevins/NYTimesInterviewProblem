@@ -25,43 +25,56 @@
 </head>
 <body class="container" ng-app="app">
   <div ng-controller="TopStoriesController">
-    <table st-table="displayedArticles" st-safe-src="articles" class="table table-striped row">
-      <thead>
-      <tr>
-      <th colspan="4">
-        <input st-search="" placeholder="search by title" class="input-sm form-control" type="search"/>
-      </th>
-      <th>
-        <select class="form-control" id="section" ng-model="section" 
-          ng-options="section for section in sections" ng-change="onSectionChange(section)"></select>
-        </select>
-      </th>
-      </tr>  
-      <tr>
-        <th>Title</th>
-        <th>Abstract</th>
-        <th>Full Article</th>
-        <th>Date</th>
-        <th>Date (Fiji)</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="times-font" ng-repeat="article in displayedArticles">
-        <td class="col-xs-2">{{article.title}}</td>
-        <td class="col-xs-5">{{article.abstract}}</td>
-        <td class="col-xs-1"><a href="{{article.url}}">View Full Story</a></td>
-        <td class="col-xs-2">{{article.published_date | amDateFormat:'MM/DD/YYYY hh:mm A' }}</td>
-        <td class="col-xs-2">{{article.published_date | amTimezone:'Pacific/Fiji' | amDateFormat:'MM/DD/YYYY hh:mm A' }}</td>
-      </tr>
-      </tbody>
-      <tfoot>
+    <div  class="row" ng-show="showLoader">
+      <div class="col-xs-12">
+        <img src="resources/images/spinner_rsz.gif" 
+          class="img-responsive centered-horizontal" 
+          alt="loading">
+      </div>
+    </div>
+    <div ng-show="!showLoader">
+      <table st-table="displayedArticles" st-safe-src="articles" 
+        class="table table-striped row">
+        <thead>
         <tr>
-          <td colspan="5" class="text-center">
-            <div st-pagination="" st-items-by-page="itemsPerPage" st-displayed-pages="10"></div>
-          </td>
+        <th colspan="4">
+          <input st-search="" placeholder="search by title" 
+            class="input-sm form-control" type="search"/>
+        </th>
+        <th>
+          <select class="form-control" id="section" ng-model="section" 
+            ng-options="section for section in sections" 
+            ng-change="onSectionChange(section)"></select>
+          </select>
+        </th>
+        </tr>  
+        <tr>
+          <th>Title</th>
+          <th>Abstract</th>
+          <th>Full Article</th>
+          <th>Date</th>
+          <th>Date (Fiji)</th>
         </tr>
-      </tfoot>
-    </table>
+        </thead>
+        <tbody>
+        <tr class="times-font" ng-repeat="article in displayedArticles">
+          <td class="col-xs-2">{{article.title}}</td>
+          <td class="col-xs-5">{{article.abstract}}</td>
+          <td class="col-xs-1"><a href="{{article.url}}">View Full Story</a></td>
+          <td class="col-xs-2">{{article.published_date | amDateFormat:'MM/DD/YYYY hh:mm A' }}</td>
+          <td class="col-xs-2">{{article.published_date | amTimezone:'Pacific/Fiji' | amDateFormat:'MM/DD/YYYY hh:mm A' }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-center">
+              <div st-pagination="" st-items-by-page="itemsPerPage" 
+                st-displayed-pages="10"></div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
 </body>
 </html>

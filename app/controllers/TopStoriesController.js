@@ -4,13 +4,16 @@ angular.module('app')
   const itemsPerPage = 10;
   $scope.articles = [];
   $scope.sections = [];
-  $scope.predicates = ['title', 'abstract', 'url'];
   $scope.itemsPerPage = itemsPerPage;
   $scope.section = 'home'; // display home section by default 
-
+  $scope.showLoader = false;
+  
   retrieveData = () => {
+    $scope.showLoader = true;
+    
     articlesFactory.requestArticles($scope.section).then((response) => {
       $scope.articles = response.data.results;
+      $scope.showLoader = false;
     });
   };
 
