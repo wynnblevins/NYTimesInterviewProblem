@@ -33,12 +33,13 @@
       </div>
     </div>
     <div ng-show="!showLoader">
+      <h1 class="">Articles Found: {{(articles | filter:searchBoxText).length}}</h1>
       <table st-table="displayedArticles" st-safe-src="articles" 
         class="table table-striped row">
         <thead>
         <tr>
         <th colspan="4">
-          <input st-search="" placeholder="search by title" 
+          <input st-search="" ng-model="searchBoxText" placeholder="search by title" 
             class="input-sm form-control" type="search"/>
         </th>
         <th>

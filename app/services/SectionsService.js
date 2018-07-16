@@ -1,6 +1,6 @@
 angular.module('app').service('SectionsService', function () {
   this.getAllSections = function () {
-    let sections = [
+    const sections = [
       'home',
       'opinion',
       'world',
